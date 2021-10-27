@@ -1,0 +1,69 @@
+{{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+{{ 'bootstrap.min.js' | asset_url | script_tag }}
+<style>
+
+.btn-glance{
+    position:absolute; 
+    margin-left: 180px;
+    left:50%;
+    width:100px;
+    bottom:0px;
+    z-index: +2;
+}
+
+.btn-primary{
+    width:100px;
+}
+
+.product-quickglance-overlay-container{
+    z-index: -1;
+}
+</style>
+
+
+
+
+<div class="new-btn">
+    {%- if product_card_product.available == true -%}
+    <div class="btn-glance">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#glanceModal">
+            Glance
+        </button> 
+        {%- endif -%}
+</div>
+
+
+<!-- Button trigger modal -->
+<div class="btn-glance">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#glanceModal">
+            Glance
+        </button> 
+</div>
+
+
+<!-- Modal -->
+
+
+<div class="product-quickglance-overlay-container">
+        
+
+    <div class="modal fade" id="glanceModal" tabindex="-1" aria-labelledby="glanceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="glanceModalLabel">Product Name
+                {{ product_card_product.title | escape }}
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">ADD TO CART</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
