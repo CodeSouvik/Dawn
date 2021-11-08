@@ -16,26 +16,19 @@
 }
 
 .product-quickglance-overlay-container{
-    z-index: -1;
+    z-index: -3;
 }
 </style>
 
 
 
 
-<div class="new-btn">
-    {%- if product_card_product.available == true -%}
-    <div class="btn-glance">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#glanceModal">
-            Glance
-        </button> 
-        {%- endif -%}
-</div>
+
 
 
 <!-- Button trigger modal -->
 <div class="btn-glance">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#glanceModal">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#glanceModal_{{ product_var.id }}">
             Glance
         </button> 
 </div>
@@ -47,22 +40,36 @@
 <div class="product-quickglance-overlay-container">
         
 
-    <div class="modal fade" id="glanceModal" tabindex="-1" aria-labelledby="glanceModalLabel" aria-hidden="true">
+    <div class="modal fade" id="glanceModal_{{ product_var.id }}" tabindex="-1" aria-labelledby="glanceModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="glanceModalLabel">Product Name
+              <h5 class="modal-title" id="glanceModalLabel"> {{ product_var.title }}
+                
+            
+                <ul>{% for image in product_var.images %}
+                  <li>{{image | img_url }}</li>
+                  {% endfor %}
+                </ul>
+
+                
                 {{ product_card_product.title | escape }}
+                
               </h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               ...
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" id="modalFooter_{{ product_var.id }}">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">ADD TO CART</button>
+
+              <div class="addtocart" id="addtocart{{ product_var.id }}"> 
+                <button type="button" onclick={{ product_var.url | default: '#' }} class="btn btn-primary">ADD TO CART</button>
+              </div>
+              
             </div>
+
           </div>
         </div>
       </div>

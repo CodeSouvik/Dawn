@@ -15,9 +15,8 @@
 {% endcomment %}
 
 
-{{ 'component-rating.css' | asset_url | stylesheet_tag }}
-{{ 'modal-popup.css' | asset_url | stylesheet_tag }}
 
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
 
 
 <div class="card-wrapper">
@@ -30,44 +29,11 @@
 
       {%- if product_card_product.featured_media -%}
         <h3 class="card-information__text h5">
-          <a data-fancybox  data-src="#my_popup_{{ product_card_product.id }}" class="full-unstyled-link"
-          data-width="1300"
-          data-height="800">
-               
-
+          <a href="{{ product_card_product.url | default: '#' }}" class="full-unstyled-link">
             {{ product_card_product.title | escape }}
           </a>
         </h3>
       {%- endif -%}
-
-      <div id="my_popup_{{ product_card_product.id }}" style="display: none;" text-align="center">
-   
-        <div class="">
-          <div class="flexslider">
-            <ul class="slides" >
-              {% for image in product_card_product.images %}
-                <li>
-                  <img src="{{image | img_url: '400x' }}"  />
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-        
-        
-        
-      
-        
-        <div class="gotodetails_btn">
-          <p>{{ product_card_product.title | escape }}</p>          
-          <h4>{{product_card_product.price | money_with_currency }}</h4>
-          <a href='{{ product_card_product.url | default: '#' }}'>
-            <button class="button-9" role="button">Details</button>
-          </a>
-        </div>
-     
-       
-      </div>
 
       {% comment %} TODO: metafield {% endcomment %}
       <span class="caption-large light">{{ block.settings.description | escape }}</span>
@@ -164,6 +130,10 @@
 
       <div class="card__badge">
 
+        <div class = "glance-modal" >
+          {% render 'product-glance-modal', product_var : product_card_product  %} 
+        </div>
+
         {%- if product_card_product.available == false -%}
           <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">{{ 'products.product.sold_out' | t }}</span>
         {%- elsif product_card_product.compare_at_price > product_card_product.price and product_card_product.available -%}
@@ -176,3 +146,4 @@
   </div>
   
 </div>
+
