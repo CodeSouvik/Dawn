@@ -5,7 +5,9 @@
 
 <div class="page-width{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
   <div>
+    
     <div class="cart__footer">
+
       {%- if section.settings.show_cart_note -%}
         <cart-note class="cart__note field">
           <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
@@ -22,8 +24,16 @@
               <div class="js-contents" {{ block.shopify_attributes }}>
                 <div class="totals">
                   <h3 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h3>
-                  <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
+                  <p id="subtotalvalue" class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
+                  
+                  <!-- <p hidden id="subtotalvalue" class="subtotalvalue" value="{{ cart.total_price | money }}">{{ cart.total_price | money }}</p> -->
+
+                  <button id="checkid" >Click Me</button>
                 </div>
+
+
+                                
+
 
                 <div>
                   {%- if cart.cart_level_discount_applications.size > 0 -%}
@@ -143,3 +153,26 @@
   ]
 }
 {% endschema %}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>>
+<script>
+  $(document).ready(function(){
+
+    var cartTotal;
+
+    document.getElementById("subtotalvalue").addEventListener('change', () => console.log("Hi"));
+
+    // if(String(cartTotal)=="[object Object]"){
+    //   cartTotal = $('.subtotalvalue').text();
+    // }
+    
+    
+    $('#checkid').click(function(){
+      console.log("Hi there "+cartTotal);
+    });
+
+  
+   
+    
+  })
+</script>

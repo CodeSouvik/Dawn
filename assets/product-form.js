@@ -10,9 +10,14 @@ if (!customElements.get('product-form')) {
 
     onSubmitHandler(evt) {
       evt.preventDefault();
+
+    
+      
       const submitButton = this.querySelector('[type="submit"]');
       if (submitButton.classList.contains('loading')) return; 
 
+  
+      
       this.handleErrorMessage();
       this.cartNotification.setActiveElement(document.activeElement);
 
@@ -46,7 +51,11 @@ if (!customElements.get('product-form')) {
           submitButton.removeAttribute('aria-disabled');
           this.querySelector('.loading-overlay__spinner').classList.add('hidden');
         });
+
+        
     }
+
+    
 
     handleErrorMessage(errorMessage = false) {
       this.errorMessageWrapper = this.errorMessageWrapper || this.querySelector('.product-form__error-message-wrapper');

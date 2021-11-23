@@ -75,6 +75,10 @@ class CartNotification extends HTMLElement {
   setActiveElement(element) {
     this.activeElement = element;
   }
+
+  example(){
+    console.log("Hi there");
+  }
 }
 
 customElements.define('cart-notification', CartNotification);
