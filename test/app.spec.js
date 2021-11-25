@@ -1,7 +1,7 @@
 const assert = require('assert');
-const { add }= require('../assets/app');
+const { add }= require('../assets/mainproduct');
 const { expect } =require('chai');
-const { sub }= require('../assets/app');
+const { sub }= require('../assets/mainproduct');
 
 describe(' add function ', () => {
     it("the add fucntion should add two numbers",()=> {
