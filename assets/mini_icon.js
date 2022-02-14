@@ -48,7 +48,7 @@ console.log(["facebook","google","twitter","linkedin"]);let redirect_url = "";if
 
                     myArray.reverse().forEach(function (value) {
                         if(document.getElementById("mo_openid_login")){
-                        document.getElementById("mo_openid_login").insertAdjacentHTML("afterbegin","<a href=\"https://shop.miniorange.com/social-login/openidcallback/"+value+"?shop=devecommercestore.myshopify.com&hosts="+window.location.host+"\" ><img class=\"mo_login_icon_preview btn-"+value+"\" id=\"mo_login_icon_preview_"+value+"\" src=\"https://shop.miniorange.com/social-login/img/"+value+".png\" style=\"display: inline; margin-left: 0px; height: 35px; width: 35px; border-radius: 999px; margin-left: 4px; \"></a>");
+                        document.getElementById("mo_openid_login").insertAdjacentHTML("afterbegin","<a href=\"https://shop.miniorange.com/social-login/openidcallback/"+value+"?shop=devecommercestore.myshopify.com&hosts="+window.location.host+"\" style=\"display: inline;\" ><img class=\"mo_login_icon_preview btn-"+value+"\" id=\"mo_login_icon_preview_"+value+"\" src=\"https://shop.miniorange.com/social-login/img/"+value+".png\" style=\"display: inline; margin-left: 0px; height: 35px; width: 35px; border-radius: 999px; margin-left: 4px; \"></a>");
                     }
                     });
  });
